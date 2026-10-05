@@ -40,6 +40,16 @@ Project technologies are placeholders where source repositories were not provide
 
 This is a static website and can be hosted free on GitHub Pages, Vercel, or another static host. No paid server or build dependency is needed.
 
+### Firebase Hosting
+
+The included `firebase.json` publishes the production build from `dist/`. Create a **separate Firebase project for this portfolio**; do not select the `onlinelibrary-c33f9` project used by the Online Library Catalog, because deploying to its default Hosting site could replace that app.
+
+1. Install the Firebase CLI (`npm install -g firebase-tools`) and sign in with `firebase login`.
+2. From this repository, run `firebase use --add` and select the new portfolio Firebase project.
+3. Build and deploy with `npm run build` followed by `firebase deploy --only hosting`.
+
+Firebase Hosting's current no-cost quota includes 10 GB of Hosting storage and 10 GB/month of data transfer. If a project exceeds the free data-transfer limit, the site may be disabled until the next monthly cycle unless the project is upgraded to Blaze. See [Firebase Hosting quotas and pricing](https://firebase.google.com/docs/hosting/usage-quotas-pricing). Update the canonical and Open Graph URLs in `index.html`, plus `robots.txt` and `sitemap.xml`, after choosing the final Firebase site URL or custom domain.
+
 ### GitHub Pages
 
 1. Push this repository to GitHub.
