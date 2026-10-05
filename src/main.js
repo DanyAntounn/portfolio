@@ -2,6 +2,7 @@ import { siteConfig, skillGroups, experience, projects, certifications } from ".
 
 const escapeHTML = (value = "") => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
 const safeExternalUrl = (url) => /^https?:\/\//i.test(url || "");
+const assetUrl = (path) => path?.startsWith("/") ? `.${path}` : path;
 
 function renderSkills() {
   document.querySelector("#skills-grid").innerHTML = skillGroups.map((group, index) => `
@@ -32,7 +33,7 @@ function renderProjects() {
   document.querySelector("#projects-grid").innerHTML = sortedProjects.map((project, index) => `
     <article class="project-card reveal ${project.featured ? "is-featured" : ""}" style="--reveal-delay:${index * 100}ms">
       <div class="project-image-wrap">
-        <img class="project-image" src="${escapeHTML(project.image)}" alt="${escapeHTML(project.imageAlt || `${project.title} project screenshot`)}" loading="lazy" width="760" height="470" />
+        <img class="project-image" src="${escapeHTML(assetUrl(project.image))}" alt="${escapeHTML(project.imageAlt || `${project.title} project screenshot`)}" loading="lazy" width="760" height="470" />
         <span class="project-image-placeholder"><span class="placeholder-mark">${escapeHTML(project.title.split(/\s+/).map((word) => word[0]).slice(0, 2).join(""))}</span><span>Add project screenshot<br /><small>${escapeHTML(project.image)}</small></span></span>
         ${project.featured ? '<span class="featured-label"><span>✦</span> FEATURED</span>' : ""}
         <span class="project-status">${escapeHTML(project.status || "Project")}</span>

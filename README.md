@@ -29,10 +29,10 @@ The build copies the static site into `dist/`. The preview server serves that di
 
 - **Email and social URLs:** edit `siteConfig` in `src/data.js`. Keep unknown URLs empty. Replace `YOUR_EMAIL_HERE` with the real email address when ready.
 - **Projects:** add/edit entries in the `projects` array in `src/data.js`. The Projects section renders entries automatically; no component changes are needed. Supported fields are `title`, `description`, `category`, `technologies`, `image`, `liveUrl`, `githubUrl`, `featured`, `status`, `imageAlt`, and optional `features`. Use empty URL strings when a URL is not known; buttons remain hidden.
-- **Project images:** put real screenshots in `public/images/` and set each project's `image` to `/images/your-image.png`. No project screenshot is fabricated. Until you add them, a designed placeholder appears automatically.
+- **Project images:** put real screenshots in `public/images/` and set each project's `image` to `/images/your-image.png`. The site resolves these paths on GitHub Pages project URLs as well. No project screenshot is fabricated. Until you add them, a designed placeholder appears automatically.
 - **Skills, experience, certifications:** edit the corresponding arrays in `src/data.js`.
 - **SEO and site title:** edit the `<title>` and metadata in `index.html`.
-- **Sitemap / robots:** replace `YOUR_DOMAIN_HERE` in `sitemap.xml` and `robots.txt` with the deployed domain.
+- **Sitemap / robots:** update `sitemap.xml`, `robots.txt`, and the Open Graph URLs in `index.html` if you use a domain other than the current GitHub Pages address.
 
 Project technologies are placeholders where source repositories were not provided. Confirm them against the original project files before publishing.
 
@@ -43,8 +43,8 @@ This is a static website and can be hosted free on GitHub Pages, Vercel, or anot
 ### GitHub Pages
 
 1. Push this repository to GitHub.
-2. In the repository settings, enable **Pages** and deploy from the `main` branch root. Since `index.html` is at the root, no build step is required.
-3. For a project site under a repository subpath, change root-relative paths (`/src/...`, `/images/...`, `/favicon.svg`) to paths that include that repository base, or configure a custom domain.
+2. In **Settings → Pages**, select **Deploy from a branch**, choose `main` and `/(root)`, then save.
+3. GitHub Pages will publish the site at `https://danyantounn.github.io/portfolio/`. Asset URLs are project-relative so they work under this repository subpath without extra changes.
 
 ### Vercel
 
